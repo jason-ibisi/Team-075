@@ -78,6 +78,33 @@ app.post('/register', (req, res) => {
   res.json(database.users[database.users.length - 1]);
 })
 
+app.get('/profile/:id', (req, res) => {
+  const { id } = req.params;
+  let found = true;
+  database.users.forEach(user => {
+    if (user.id === parseInt(id)) {
+      found = true;
+      return res.json(user);
+    }
+  })
+  if (!found) {
+    res.status(404).json('no such user!');
+  }
+})
+
 app.listen(PORT, () => {
   console.log('Server started and running ...');
 });
+
+
+/*
+
+/ --> res = this is working
+
+POST /signin --> res = success/fail
+POST /register --> res = user
+GET /profile/:userid --> res = user
+
+
+
+*/
