@@ -19,7 +19,7 @@ app.use((req, res, next) => { //This blocks the requests from hitting the endpoi
   }
 });
 
-// app.use((err, req, res) => { //This middleware blocks the request from reaching the the endpoints
+// app.use((err, req, res) => { //This middleware blocks the request from reaching the endpoints
 //   if (res.headersSent) {
 //     return;
 //   }
