@@ -29,6 +29,14 @@ app.use((req, res) => {
   res.status(404).send('Resource not found.');
 });
 
+app.use((req, res, next) => {
+  if (!req.body) {
+    res.status(404).send('Resource not found.');
+  } else {
+    next();
+  }
+});
+
 app.use((err, req, res) => {
   if (res.headersSent) {
     return;
