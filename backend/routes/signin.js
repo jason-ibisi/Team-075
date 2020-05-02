@@ -6,7 +6,7 @@ const handleSignin = (req, res, database) => {
     
     if (req.body.email === email && req.body.password === password) {
             res.json('success');
-        }else {
+    } else {
             res.status(400).json('error logging in');
         }
   }
