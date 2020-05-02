@@ -1,23 +1,25 @@
-const report = {
-  _id: String,
-  userId: String,
+const mongoose = require('mongoose');
+const uniqueValidator = require('mongoose-unique-validator');
+
+const reportSchema = mongoose.Schema({
   reporter: {
-    phoneNo: String
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
+    phoneNo: { type: String, required: true }
   },
   location: {
-    latitude: Number,
-    longitude: Number
+    latitude: { type: String, required: true },
+    longitude: { type: String, required: true }
   },
-  reponse: {
-    status: String,
-    responder: String,
-    phoneNo: Number,
-    recievedAt: Date,
-    eta: Date,
-    arrivedAt: Date
-  },
-  imageUrl: String,
-  timeStamp: Number
-};
+  imageUrl: { type: String },
+  response: {
+    status: { type: String, default: 'Respone Pending' },
+    responder: { type: mongoose.Schema.Types.ObjectId, ref: 'responders' },
+    recievedAt: { type: Date },
+    etaToLocation: { type: Number },
+    arrivedAt: { type: Date }
+  }
+}, { timestamps: true });
 
-module.exports = report;
+reportSchema.plugin(uniqueValidator);
+
+module.exports = mongoose.model('Report', reportSchema);

@@ -10,7 +10,7 @@ const userSchema = mongoose.Schema({
     name: { type: String, required: true },
     phoneNo: { type: String, required: true }
   }
-});
+}, { timestamps: true });
 
 userSchema.plugin(uniqueValidator);
 
