@@ -2,10 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-// import routes from routes folder
-const register = require('./routes/register');
-const signin = require('./routes/signin');
-const profile = require('./routes/profile');
+const { handleRegister, handleSignin, handleProfile } = require('./routes/user');
 
 const app = express();
 
@@ -57,9 +54,10 @@ app.get('/', (req, res) => {
   res.json(database.users);
 })
 
-app.post('/signin', (req, res) => { signin.handleSignin(req, res, database) });
-app.post('/register', (req, res) => { register.handleRegister(req, res, database) });
-app.get('/profile/:id', (req, res) => { profile.handleProfile(req, res, database)})
+
+app.post('/signin', (req, res) => { handleSignin(req, res, database) });
+app.post('/register', (req, res) => { handleRegister(req, res, database) });
+app.get('/profile/:id', (req, res) => { handleProfile(req, res, database)})
 
 
 
