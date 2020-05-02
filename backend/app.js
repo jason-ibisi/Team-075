@@ -1,7 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+
 // import routes from routes folder
+const register = require('./routes/register');
+const signin = require('./routes/signin');
+const profile = require('./routes/profile');
 
 const app = express();
 
@@ -53,44 +57,11 @@ app.get('/', (req, res) => {
   res.json(database.users);
 })
 
-app.post('/signin', (req, res) => {
-  
-  const { email, password } = database.users[0]
-  
-  if (req.body.email === email && req.body.password === password) {
-          res.json('success');
-      }else {
-          res.status(400).json('error logging in');
-      }
-})
+app.post('/signin', (req, res) => { signin.handleSignin(req, res, database) });
+app.post('/register', (req, res) => { register.handleRegister(req, res, database) });
+app.get('/profile/:id', (req, res) => { profile.handleProfile(req, res, database)})
 
-app.post('/register', (req, res) => {
 
-  const { name, email, password } = req.body;
-
-  database.users.push({
-      id: database.users[database.users.length - 1].id + 1,
-      name,
-      email,
-      password,
-      joined: new Date()
-  })
-  res.json(database.users[database.users.length - 1]);
-})
-
-app.get('/profile/:id', (req, res) => {
-  const { id } = req.params;
-  let found = true;
-  database.users.forEach(user => {
-    if (user.id === parseInt(id)) {
-      found = true;
-      return res.json(user);
-    }
-  })
-  if (!found) {
-    res.status(404).json('no such user!');
-  }
-})
 
 app.listen(PORT, () => {
   console.log('Server started and running ...');
