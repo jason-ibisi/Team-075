@@ -12,7 +12,7 @@ const geolib = require('geolib');
 //     { latitude: 48.8583, longitude: 2.2945 },
 //     { latitude: 59.3275, longitude: 18.0675 },
 //     { latitude: 59.916911, longitude: 10.727567 },
-]
+// ]
 
 
 const victimAndResponseUnit = (victimsCoordinate, emergencyResponseCoordinates) => {
