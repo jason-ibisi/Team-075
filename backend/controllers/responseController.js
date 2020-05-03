@@ -1,10 +1,11 @@
 const geolib = require('geolib');
 
 
+// const victimsLocation = { latitude: 52.456221, longitude: 12.63128 }
+//  Victims loaction received from the front-end
 
-// const victimsLocation = { latitude: 52.456221, longitude: 12.63128 } //Victims loaction received from the front-end
-
-// const emergencyResponseLocation =  [ // All the Emergency Response units in that location (state) in an array.
+// const emergencyResponseLocation =  [
+// All the Emergency Response units in that location (state) in an array.
 //     { latitude: 52.516272, longitude: 13.377722 },
 //     { latitude: 51.515, longitude: 7.453619 },
 //     { latitude: 51.503333, longitude: -0.119722 },
@@ -15,12 +16,8 @@ const geolib = require('geolib');
 // ]
 
 
-const victimAndResponseUnit = (victimsCoordinate, emergencyResponseCoordinates) => {
-    return `${geolib.getPreciseDistance(victimsCoordinate, geolib.findNearest(victimsCoordinate, emergencyResponseCoordinates))/1000}km`
-}
+const victimAndResponseUnit = (victimsCoordinate, emergencyResponseCoordinates) => (`${geolib.getPreciseDistance(victimsCoordinate, geolib.findNearest(victimsCoordinate, emergencyResponseCoordinates)) / 1000}km`);
 
-console.log(victimAndResponseUnit(victimsLocation, emergencyResponseLocation))
+// console.log(victimAndResponseUnit(victimsLocation, emergencyResponseLocation))
 
-module.exports = {
-    victimAndResponseUnit: victimAndResponseUnit
-}
+module.exports = victimAndResponseUnit;
