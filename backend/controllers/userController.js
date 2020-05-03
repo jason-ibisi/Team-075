@@ -1,6 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const _ = require('lodash');
 const User = require('../models/user');
 
 exports.signup = (req, res) => {
@@ -47,7 +48,7 @@ exports.login = (req, res) => {
           { expiresIn: '1h' });
 
         return res.status(200).json({
-          userId: user._id,
+          userId: _.omit(user.toObject(), ['password', '__v', 'createdAt', 'modifiedAt']),
           token
         });
       }).catch((error) => {
