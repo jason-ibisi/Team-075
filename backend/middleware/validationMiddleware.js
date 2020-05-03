@@ -22,6 +22,19 @@ const reportSchema = joi.object({
   })
 }).options({ stripUnknown: true });
 
+const responseUnitSchema = joi.object({
+  name: joi.string().required(),
+  email: joi.string().email().required(),
+  password: joi.string().min(6).max(15).required(),
+  contact: joi.object({
+    primaryPhoneNo: joi.string().pattern(/^([0-9])\d{10}$/).required(),
+    secondaryPhoneNo: joi.string().pattern(/^([0-9])\d{10}$/).disallow(joi.ref('primaryPhoneNo')).required(),
+    primaryAddress: joi.string().max(255),
+    secondaryAddress: joi.string().disallow(joi.ref('primaryAddress')).max(255).allow(''),
+    website: joi.string().pattern(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([-.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/).max(255).allow('')
+  })
+}).options({ stripUnknown: true });
+
 const userValidation = (req, res, next) => {
   const { error } = userSchema.validate(req.body);
 
@@ -40,7 +53,20 @@ const reportValidation = (req, res, next) => {
 
   if (error) {
     return res.status(422).json({
-      message: 'Invalid data',
+      message: 'Invalid data schema.',
+      error
+    });
+  }
+
+  return next();
+};
+
+const responseUnitValidation = (req, res, next) => {
+  const { error } = responseUnitSchema.validate(req.body);
+
+  if (error) {
+    return res.status(422).json({
+      message: 'Invalid data schema.',
       error
     });
   }
@@ -50,5 +76,6 @@ const reportValidation = (req, res, next) => {
 
 module.exports = {
   userValidation,
-  reportValidation
+  reportValidation,
+  responseUnitValidation
 };

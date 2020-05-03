@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 // import routes from routes folder
 const userRoutes = require('./routes/user');
 const reportRoutes = require('./routes/report');
+const responeUnitRoutes = require('./routes/responseUnit');
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.use(bodyParser.json());
 // Register routes
 app.use('/api/auth', userRoutes);
 app.use('/api/report', reportRoutes);
+app.use('/api/response-unit', responeUnitRoutes);
 
 app.use((req, res) => {
   res.status(404).send('Resource not found.');
