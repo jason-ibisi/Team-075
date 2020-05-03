@@ -1,16 +1,28 @@
 const geolib = require('geolib');
+const Joi = require('@hapi/joi');
+
+const schemaVictim = Joi.object().keys({
+  latitude: Joi.number().required(),
+  longitude: Joi.number().required()
+});
+
+const schemaEmergency = Joi.array().min(1).items(Joi.object().keys({
+  latitude: Joi.number().required(),
+  longitude: Joi.number().required()
+})).required();
 
 const victimAndResponseUnit = (victimsCoordinate, emergencyResponseCoordinates) => {
-  if (!victimsCoordinate || !emergencyResponseCoordinates) {
+  const victimResult = schemaVictim.validate(victimsCoordinate);
+  const responseResult = schemaEmergency.validate(emergencyResponseCoordinates);
+  const { value, error } = victimResult;
+
+  if (typeof (error) === 'object') {
     return 'Invalid input to victimAndResponseUnit.';
   }
-  if (typeof (victimsCoordinate) !== 'object' || typeof (emergencyResponseCoordinates) !== 'object') {
+  if (typeof (responseResult.error) === 'object') {
     return 'Invalid input to victimAndResponseUnit.';
   }
-  if (!emergencyResponseCoordinates.length) {
-    return 'Invalid input to victimAndResponseUnit.';
-  }
-  return `${geolib.getPreciseDistance(victimsCoordinate, geolib.findNearest(victimsCoordinate, emergencyResponseCoordinates)) / 1000}km`;
+  return `${geolib.getPreciseDistance(value, geolib.findNearest(value, responseResult.value)) / 1000}km`;
 };
 
 module.exports = victimAndResponseUnit;
