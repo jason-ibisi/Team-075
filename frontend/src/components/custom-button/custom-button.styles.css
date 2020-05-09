@@ -1,0 +1,15 @@
+.custom-button {
+    min-width: 165px;
+    width: 100px;
+    height: 150px;
+    letter-spacing: 0.5px;
+    line-height: 50px;
+    padding: 0 35px 0 35px;
+    font-size: 30px;
+    background-color: red;
+    color: white;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 100%;
+    cursor: pointer;
+}

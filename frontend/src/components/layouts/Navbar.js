@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 function Navbar() {
   return (
     <header>
-      <img src="images/logo.svg" alt="Help logo" id="logo" />
+      <Link to="/">
+        <img src="images/logo.svg" alt="Help logo" id="logo" />
+      </Link>
       <nav className="nav">
         <Link className="nav-link" to="/login">
           Login
