@@ -35,6 +35,16 @@ const responseUnitSchema = joi.object({
   })
 }).options({ stripUnknown: true });
 
+const victimLocationSchema = joi.object().keys({
+  latitude: joi.number().required(),
+  longitude: joi.number().required()
+});
+
+const responseUnitsSchema = joi.array().min(1).items(joi.object().keys({
+  latitude: joi.number().required(),
+  longitude: joi.number().required()
+})).required();
+
 const userValidation = (req, res, next) => {
   const { error } = userSchema.validate(req.body);
 
@@ -74,8 +84,30 @@ const responseUnitValidation = (req, res, next) => {
   return next();
 };
 
+const coordinatesValidation = (victimCoord, responseUnitCoord, next) => {
+  const { error: victimCoordinatesError } = victimLocationSchema.validate(victimCoord);
+  const { error: responseUnitCoordinatesError } = responseUnitsSchema.validate(responseUnitCoord);
+
+  if (victimCoordinatesError) {
+    return {
+      message: 'Invalid user coordinates schema',
+      error: victimCoordinatesError
+    };
+  }
+
+  if (responseUnitCoordinatesError) {
+    return {
+      message: 'Invalid responseUnit coordinates schema',
+      error: responseUnitCoordinatesError
+    };
+  }
+
+  return next();
+};
+
 module.exports = {
   userValidation,
   reportValidation,
-  responseUnitValidation
+  responseUnitValidation,
+  coordinatesValidation
 };

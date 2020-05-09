@@ -17,6 +17,11 @@ exports.createReport = (req, res) => {
     res.status(201).json({
       message: 'Report logged successfully!'
     });
+
+    console.log('Did it get here ?');
+    res.status(201).json({
+      message: 'Second response'
+    });
   }).catch((error) => {
     res.status(500).json({
       error
