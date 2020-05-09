@@ -1,6 +1,6 @@
 const geolib = require('geolib');
 const Joi = require('@hapi/joi');
- 
+
 const schemaVictim = Joi.object().keys({
   latitude: Joi.number().required(),
   longitude: Joi.number().required()
@@ -26,4 +26,3 @@ const victimAndResponseUnit = (victimsCoordinate, emergencyResponseCoordinates) 
 };
 
 module.exports = victimAndResponseUnit;
-  
