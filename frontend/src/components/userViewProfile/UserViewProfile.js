@@ -9,7 +9,7 @@ function UserViewProfile() {
       <p className="sub-heading">Profile information</p>
       <img
         src="images/profilePicture.svg"
-        alt="upload profile picture"
+        alt="profile-pic"
         id="profile-pic"
       />
       <h4 className="profile-name">Johnson Pearson</h4>
