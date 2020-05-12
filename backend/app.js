@@ -3,9 +3,12 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 // import routes from routes folder
+const dotenv = require('dotenv');
 const userRoutes = require('./routes/user');
 const reportRoutes = require('./routes/report');
 const responeUnitRoutes = require('./routes/responseUnit');
+
+dotenv.config();
 
 const app = express();
 

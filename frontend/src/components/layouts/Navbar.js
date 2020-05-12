@@ -18,7 +18,9 @@ export default class Navbar extends Component {
   render() {
     return (
       <header>
-        <img src="images/logo.svg" alt="help logo" id="logo" />
+        <Link to="/">
+          <img src="images/logo.svg" alt="help logo" id="logo" />
+        </Link>
         <nav className={"nav " + (this.state.showMenu ? "show-menu" : "")}>
           <Link className="nav-link" to="/login">
             Login
