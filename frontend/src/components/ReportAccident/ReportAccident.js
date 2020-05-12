@@ -1,21 +1,21 @@
 import React, {Component} from "react";
 import './ReportAccident.css';
 
-class AdditionalDetails extends Component {
+class ReportAccident extends Component {
   render (){
   return (
-      <section class="container">
-        <h4 class="text-center font-weight-bold">Additional Details</h4>
-        <p class="text-center pb-3">Please provide the following additional details</p>
+      <section>
+        <h4 className="">Additional Details</h4>
+        <p className="">Please provide the following additional details</p>
 
             <form id="additional-details" action="" method="POST">
                 <fieldset>
-                    <div class="form-group">
-                        <input type="text" class="form-control rounded-lg shadow-none" placeholder="Phone number *" />
+                    <div className="form-group">
+                        <input type="text" className="form-control" placeholder="Phone number *"/>
                     </div>
 
-                    <div class="form-group">
-                        <select name="" id="type-of-accident" class="form-control rounded-lg shadow-none">
+                    <div className="form-group">
+                        <select name="" id="type-of-accident" className="form-control">
                             <option value="">Type of Accident</option>
                             <option value="1">Motor Accident</option>
                             <option value="2">Fire Accident</option>
@@ -25,8 +25,8 @@ class AdditionalDetails extends Component {
                         </select>
                     </div>
 
-                    <div class="form-group">
-                        <select name="" id="type-of-accident" class="form-control rounded-lg shadow-none">
+                    <div className="form-group">
+                        <select name="" id="type-of-accident" className="form-control">
                             <option value="">Number of Persons Involved</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -36,13 +36,13 @@ class AdditionalDetails extends Component {
                         </select>
                     </div>
 
-                    <div class="form-group">
-                        <textarea name="" id="description" cols="10" rows="5" placeholder="Description"
-                            class="form-control rounded-lg shadow-none"></textarea>
+                    <div className="form-group">
+                        <textarea id="description" cols="10" rows="5" placeholder="Description"
+                            className="form-control"></textarea>
                     </div>
 
-                    <button class="btn btn-outline-danger">Upload picture</button>
-                    <button class="btn btn-danger mt-4">Send</button>
+                    <button className="btn-upload-picture">Upload picture</button>
+                    <button className="btn-send">Send</button>
                 </fieldset>
             </form>
 
@@ -50,4 +50,4 @@ class AdditionalDetails extends Component {
   );
 }
 }
-export default AdditionalDetails;
+export default ReportAccident;
