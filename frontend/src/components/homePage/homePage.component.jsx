@@ -1,6 +1,8 @@
 import React from 'react';
 import './homePage.styles.css';
 import CustomButton from '../custom-button/custom-button.component';
+import { ReactComponent as Vehicle } from '../../assests/vehicle.svg';
+// import { ReactComponent as Wave } from '../../assests/wave.svg';
 
 class HomePage extends React.Component {
   constructor(){
@@ -31,23 +33,40 @@ class HomePage extends React.Component {
       method: 'post',
       headers: {'Content-Type':'application/json'},
       body: {
-        lat: this.state.lat,
-        lng: this.state.lng
+        location: {
+          lat: this.state.lat,
+          lng: this.state.lng
+        },
+        reporter: '',
+        phoneNo: 0,
+        userId: '',
+
       }
     })
-    .then(data => console.log)
+    .then(data => {
+      console.log(data)
+      
+    })
     .catch(error => console.log)
   }
   render(){
       return (
         <div className='homepage'>
-          <h1>Have you been involved in an accident?</h1>
-          <p>
-            Press the help button and help will reach you soon. 
-            If you are reporting as an eye witness please make use of the Eye witness button 
-          </p>
-          <CustomButton className='custom-button' onClick={ this.sendHelp }> Help! </CustomButton>
-          <div></div>
+          <div className='homepage-container'>
+            <div>
+              <h1 className='homepage-title'>Have you been involved in an accident?</h1>
+              <p className='homepage-desc'>
+                Press the help button and help will reach you soon.<br></br> 
+                If you are reporting as an eye witness please make <br></br>
+                use of the I-Witness button 
+              </p>
+            </div>
+          </div>
+            <CustomButton className='custom-button center' onClick={ this.sendHelp }> Help! </CustomButton>
+            <CustomButton className='i-witness'>Report as an I-Witness</CustomButton>
+            <div className='homepage-svg-container'>
+              <Vehicle className='homepage-svg'/>
+            </div>
         </div>
     )
   }

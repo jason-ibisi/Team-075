@@ -1,4 +1,5 @@
 .custom-button {
+    /* position: relative; */
     min-width: 165px;
     width: 100px;
     height: 150px;
@@ -12,4 +13,37 @@
     border: none;
     border-radius: 100%;
     cursor: pointer;
+    margin-bottom: 50px;
+    z-index: 1;
+}
+
+/* .custom-button:hover {
+    background-color: white;
+    color: red;
+    border: 1px solid red;
+} */
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.i-witness {
+    border-radius:none;
+    width: 15vw;
+    background-color: white;
+    border: 1px solid red;
+    height: 50px;
+    position: absolute;
+    top: 90%;
+    left: 47.5%;
+    cursor: pointer;
+    z-index: 1;
+    box-shadow: grey;
+}
+
+.i-witness:hover {
+    background-color: red;
+    color: white;
 }
