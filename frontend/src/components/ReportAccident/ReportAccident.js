@@ -1,6 +1,8 @@
-import React from "react";
+import React, {Component} from "react";
+import './ReportAccident.css';
 
-function AdditionalDetails() {
+class AdditionalDetails extends Component {
+  render (){
   return (
       <section class="container">
         <h4 class="text-center font-weight-bold">Additional Details</h4>
@@ -46,5 +48,6 @@ function AdditionalDetails() {
 
   </section>
   );
+}
 }
 export default AdditionalDetails;
