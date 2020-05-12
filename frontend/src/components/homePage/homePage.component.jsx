@@ -27,10 +27,13 @@ class HomePage extends React.Component {
     fetch('http://localhost:3001/', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
-      body: {
-        lat: this.state.lat,
-        lng: this.state.lng
-      }
+      body: JSON.stringify({
+        location:{
+          lat: this.state.lat,
+          lng: this.state.lng
+      },
+      phoneNo: '',
+      userId: ''})
     })
       .then((data) => console.log)
       .catch((error) => console.log);
