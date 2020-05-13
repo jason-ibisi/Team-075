@@ -15,14 +15,27 @@
 .feedback-body p{
   padding-bottom: 30px;
   color: #2C2C2C;
-  font-weight: 700;
+  font-weight: 600;
   font-family: "Montserrat";
   font-size: 15px;
 }
 
 .feedback-body h6{
   color: #2C2C2C;
-  font-weight: 300;
+  font-weight: 400;
   font-family: "Montserrat";
   font-size: 10px;
+}
+
+.feedback-body {
+  padding: 20px;
+  border: 1px solid rgba(54, 64, 74, 0.05);
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  background-clip: padding-box;
+  margin: auto;
+  width: 400px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
