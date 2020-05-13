@@ -1,6 +1,6 @@
-input, select{
-  width: 19.4375rem !important;
-  height: 3.3125rem !important;
+#additional-details {
+  width: 19.4375rem ;
+  height: 3.3125rem ;
   margin: auto;
 }
 
@@ -12,14 +12,14 @@ option:hover{
   background-color: #E72020;
   color: #fff;
 }
-h4{
+.report-title {
   color: #2C2C2C;
   font-size: 1.875rem;
   font-weight: 700;
   font-family: 'Montserrat', sans-serif;
 }
 
-p{
+.report-desc {
   color: #2C2C2C;
   padding: 0.9375rem 0rem 1.875rem 0rem;
   font-family: 'Montserrat', sans-serif;
