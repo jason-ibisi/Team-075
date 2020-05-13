@@ -10,9 +10,9 @@ export default class Navbar extends Component {
   }
 
   showMenu = () => {
-    this.setState({
+    this.setState((prevState, prevProps) => ({
       showMenu: !this.state.showMenu,
-    });
+    }));
   };
 
   render() {
@@ -21,7 +21,7 @@ export default class Navbar extends Component {
         <Link to="/">
           <img src="images/logo.svg" alt="help logo" id="logo" />
         </Link>
-        <nav className={"nav " + (this.state.showMenu ? "show-menu" : "")}>
+        <nav className={`nav ${this.state.showMenu ? "show-menu" : ""}`}>
           <Link className="nav-link" to="/login">
             Login
           </Link>
