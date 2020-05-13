@@ -63,3 +63,51 @@ exports.login = (req, res) => {
     });
   });
 };
+
+exports.profile = (req, res) => {
+  User.findById(req.params.id)
+    .then((user) => {
+      if (user) {
+        return res.status(200).json({
+          user
+        });
+      }
+
+      return res.status(404).json({
+        error: 'User not found.'
+      });
+    })
+    .catch((error) => {
+      res.status(500).json({
+        error
+      });
+    });
+};
+
+exports.edit = (req, res) => {
+  const user = new User({
+    _id: req.params.id,
+    name: req.body.name,
+    phoneNo: req.body.phoneNo,
+    emergencyContact: {
+      name: req.body.emergencyContact.name,
+      phoneNo: req.body.emergencyContact.phoneNo
+    }
+  });
+
+  User.updateOne({ _id: req.params.id }, user)
+    .then(() => {
+      res.status(201).json({
+        message: 'Profile updated successfully!'
+      });
+    })
+    .catch((error) => {
+      res.status(400).json({
+        error
+      });
+    });
+};
+
+// TODO: User - DELETE PROFILE
+
+// TODO: User - UPDATE PASSWORD

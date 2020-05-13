@@ -2,7 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
-// import routes from routes folder
 const dotenv = require('dotenv');
 const userRoutes = require('./routes/user');
 const reportRoutes = require('./routes/report');
@@ -16,7 +15,9 @@ const PORT = 3001;
 
 mongoose
   .connect('mongodb+srv://ersAdmin:Admin123@@ers-m0o8p.mongodb.net/ers?retryWrites=true&w=majority',
-    { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
+    {
+      useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true
+    })
   .then(() => {
     console.log('Successfully connected to MongoDB Atlas!');
   }).catch((error) => {
