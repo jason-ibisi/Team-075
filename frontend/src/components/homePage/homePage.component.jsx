@@ -1,13 +1,15 @@
 import React from 'react';
 import './homePage.styles.css';
-import CustomButton from '../custom-button/custom-button.component';
+import CustomButton from '../../components/custom-button/custom-button.component';
 
 class HomePage extends React.Component {
   constructor() {
     super();
     this.state = {
       lat: 0.0,
-      lng: 0.0
+      lng: 0.0,
+      phoneNo: '08029678990',
+      userId: '55555yyyyyy'
     };
   }
 
@@ -23,17 +25,20 @@ class HomePage extends React.Component {
   }
 
   sendHelp = () => {
-    console.log(this.state);
-    fetch('http://localhost:3001/', {
+    const { lat, lng, phoneNo, userId } = this.state;
+    fetch('http://localhost:3001/api/report', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         location:{
-          lat: this.state.lat,
-          lng: this.state.lng
-      },
-      phoneNo: '',
-      userId: ''})
+          latitude: lat.toString(),
+          longitude: lng.toString()
+        },
+        reporter:{
+          phoneNo,
+          userId
+        }
+    })
     })
       .then((data) => console.log)
       .catch((error) => console.log);
