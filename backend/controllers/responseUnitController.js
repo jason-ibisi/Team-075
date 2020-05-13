@@ -89,3 +89,33 @@ exports.getAllResponseUnits = (req, res) => {
     });
   });
 };
+
+exports.updateResponseUnit = (req, res) => {
+  const responseUnit = new ResponseUnit({
+    _id: req.params.id,
+    name: req.body.name,
+    contact: {
+      primaryPhoneNo: req.body.contact.primaryPhoneNo,
+      secondaryPhoneNo: req.body.contact.secondaryPhoneNo,
+      primaryAddress: req.body.contact.primaryAddress,
+      secondaryAddress: req.body.contact.secondaryAddress,
+      website: req.body.contact.website
+    }
+  });
+
+  ResponseUnit.updateOne({ _id: req.params.id }, responseUnit)
+    .then(() => {
+      res.status(201).json({
+        message: 'Response Unit details updated successfully!'
+      });
+    })
+    .catch((error) => {
+      res.status(500).json({
+        error
+      });
+    });
+};
+
+// TODO: Reponse Unit - DELETE
+
+// TODO: Reponse Unit - UPDATE PASSWORD

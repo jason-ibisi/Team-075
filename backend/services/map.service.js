@@ -1,11 +1,18 @@
 const { Client, Status } = require('@googlemaps/google-maps-services-js');
 const geolib = require('geolib');
 
-const getDistanceToNearestResponseUnit = (origin, destinations) => {
+const destination = [
+  { latitude: 6.246073, longitude: 5.636672 },
+  { latitude: 6.214418, longitude: 5.648431 },
+  { latitude: 6.034224, longitude: 5.673400 },
+  { latitude: 6.190696, longitude: 5.656444 }
+];
+
+const getDistanceToNearestResponseUnit = (origin, destinations = destination) => {
   const nearestResponseUnit = geolib.findNearest(origin, destinations);
   const client = new Client({});
 
-  return new Promise(((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     client.directions({
       params: {
         origin,
@@ -18,10 +25,10 @@ const getDistanceToNearestResponseUnit = (origin, destinations) => {
         resolve(result.data.routes);
       }
 
-      resolve(result.data.status);
+      resolve(result.data);
     })
       .catch((error) => reject(error));
-  }));
+  });
 };
 
 module.exports = {

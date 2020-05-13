@@ -1,4 +1,5 @@
 const Report = require('../models/report');
+const mapService = require('../services/map.service');
 
 exports.createReport = (req, res) => {
   const report = new Report({
@@ -13,15 +14,31 @@ exports.createReport = (req, res) => {
     imageUrl: req.body.imageUrl
   });
 
+  res.set('Content-Type', 'application/json');
+
   report.save().then(() => {
-    res.status(201).json({
+    res.write(JSON.stringify({
       message: 'Report logged successfully!'
+    }));
+  })
+    .then(
+      mapService.getDistanceToNearestResponseUnit(req.body.location)
+        .then((response) => {
+          res.write(JSON.stringify(response));
+          res.end();
+        })
+        .catch((error) => {
+          res.status(500).json({
+            error: `Something went wrong with fetching distance details - ${error}`
+          });
+        })
+    )
+    .catch((error) => {
+      res.status(500).json({
+        error
+      });
+      console.error(error);
     });
-  }).catch((error) => {
-    res.status(500).json({
-      error
-    });
-  });
 };
 
 exports.getReport = (req, res) => {
