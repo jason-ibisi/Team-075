@@ -1,0 +1,28 @@
+.feedback{
+  padding-top: 50px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 37px;;
+}
+
+.feedback-title{
+  padding-bottom: 60px;
+  padding-top: 15px;
+}
+
+.feedback-body p{
+  padding-bottom: 30px;
+  color: #2C2C2C;
+  font-weight: 700;
+  font-family: "Montserrat";
+  font-size: 15px;
+}
+
+.feedback-body h6{
+  color: #2C2C2C;
+  font-weight: 300;
+  font-family: "Montserrat";
+  font-size: 10px;
+}
