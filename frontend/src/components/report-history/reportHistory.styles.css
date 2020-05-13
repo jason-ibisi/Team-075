@@ -1,0 +1,17 @@
+.report {
+  border: 1px solid #dddddd;
+  width: 400px;
+  margin: 0 auto;
+  padding: 15px 0;
+  border-radius: 5px;
+}
+
+.report p {
+  padding: 5px 0;
+  font-size: 14px;
+  color: #aaaaaa;
+}
+
+.report span {
+  font-size: 18px;
+}

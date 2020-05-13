@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
-import ReportHistory from "./ReportHistory";
-import UpdateProfileButton from "../layouts/UpdateProfileButton";
+import "./userViewProfile.styles.css";
+import ReportHistory from "../report-history/ReportHistory";
+import UpdateProfileButton from "../update-profile-button/UpdateProfileButton";
 
 function UserViewProfile() {
   return (
@@ -9,7 +10,7 @@ function UserViewProfile() {
       <p className="sub-heading">Profile information</p>
       <img
         src="images/profilePicture.svg"
-        alt="upload profile picture"
+        alt="upload profile pic"
         id="profile-pic"
       />
       <h4 className="profile-name">Johnson Pearson</h4>

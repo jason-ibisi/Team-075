@@ -44,6 +44,7 @@ a {
 header {
   border-bottom: 1px solid #dddddd;
 }
+
 .nav {
   display: flex;
   justify-content: flex-end;
@@ -68,66 +69,6 @@ header {
   display: none;
 }
 
-.main-heading {
-  padding-bottom: 10px;
-}
-
-.sub-heading {
-  font-size: 15px;
-  padding-bottom: 5px;
-}
-
-#profile-pic {
-  padding: 5px 0 0 0;
-  width: 100px;
-}
-
-.profile-name {
-  font-weight: 500;
-}
-
-.phone-number {
-  font-weight: 400;
-  font-size: 13.5px;
-  padding: 3px 0;
-}
-
-.mail {
-  color: #aaaaaa;
-  padding-bottom: 10px;
-  font-size: 13.5px;
-  margin: 0;
-}
-
-.report-heading {
-  margin: 25px 0 10px 0;
-}
-
-.report {
-  border: 1px solid #dddddd;
-  width: 400px;
-  margin: 0 auto;
-  padding: 15px 0;
-  border-radius: 5px;
-}
-
-.report p {
-  padding: 5px 0;
-  font-size: 14px;
-  color: #aaaaaa;
-}
-.report span {
-  font-size: 18px;
-}
-
-.button {
-  background-color: #e72020;
-  color: white;
-  font-weight: 700;
-  padding: 7px 18px;
-  border: none;
-  border-radius: 4px;
-}
 
 @media screen and (max-width: 640px) {
   #hamburger-icon {
@@ -159,6 +100,7 @@ header {
   .nav-link {
     padding: 13px;
   }
+
   .report {
     width: 80vw;
   }

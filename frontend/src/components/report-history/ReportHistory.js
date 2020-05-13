@@ -1,4 +1,5 @@
 import React from "react";
+import "./reportHistory.styles.css";
 
 export default function ReportHistory() {
   return (
