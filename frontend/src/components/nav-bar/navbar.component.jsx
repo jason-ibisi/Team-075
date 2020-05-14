@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from 'react-redux';
+import { helpSent } from '../../redux/sendHelp/sendHelp.actions';
 
-export default class Navbar extends Component {
+class Navbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,7 +21,7 @@ export default class Navbar extends Component {
     return (
       <header>
         <Link to="/">
-          <img src="images/logo.svg" alt="help logo" id="logo" />
+          <img src="images/logo.svg" alt="help logo" id="logo" onClick={() => this.props.helpSent()}/>
         </Link>
         <nav className={`nav ${this.state.showMenu ? "show-menu" : ""}`}>
           <Link className="nav-link" to="/login">
@@ -45,3 +47,9 @@ export default class Navbar extends Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  helpSent: () => dispatch(helpSent())
+})
+
+export default connect(null, mapDispatchToProps)(Navbar);
