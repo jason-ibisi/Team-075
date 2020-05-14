@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { sendHelp } from '../../redux/sendHelp/sendHelp.actions';
+import { sendHelp, helpSent, postUserDetailsStartAsync } from '../../redux/sendHelp/sendHelp.actions';
 
 import './homePage.styles.css';
 import CustomButton from '../../components/custom-button/custom-button.component';
@@ -24,41 +25,29 @@ class HomePage extends React.Component {
   }
 
   sendHelp = () => {
-    console.log(this.props)
     const { lat, lng, phoneNo, userId } = this.props.help.location;
-    fetch('http://localhost:3001/api/report', {
-      method: 'post',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        location:{
-          latitude: lat.toString(),
-          longitude: lng.toString()
-        },
-        reporter:{
-          phoneNo,
-          userId
-        }
-    })
-    })
-      .then((data) => console.log)
-      .catch((error) => console.log);
+    const { helpSent, postUserDetailsStartAsync } = this.props;
+    postUserDetailsStartAsync(lat, lng, phoneNo, userId);
+    helpSent();
   };
+
   render() {
     return (
       <div className="homepage">
         <div className="div1">
           <h1>Have you been involved in an ACCIDENT?</h1>
           <p>
-            Press the help button and help will reach you soon. If you are reporting as an eye witness please make use
+            Press the help button and help will reach you soon. 
+            If you are reporting as an eye witness please make use
             of the Eye witness button
           </p>
         </div>
         <div className="div2">
           <CustomButton className="custom-button" onClick={this.sendHelp}>
-            {' '}
-            Help me!{' '}
+            {' '} Help me! {' '}
           </CustomButton>
         </div>
+        {/* <Link to='/report-accident'><CustomButton className='custom-button'>Report Accident</CustomButton></Link> */}
         <div className="div3">
           <img src="images/accident.svg" alt="accident vector illustration" id="accident" />
         </div>
@@ -69,10 +58,12 @@ class HomePage extends React.Component {
 
 const mapStateToProps = state => ({
   help: state.help
-})
+});
 
 const mapDispatchToProps = dispatch => ({
-  sendHelp: location => dispatch(sendHelp(location))
-})
+  sendHelp: location => dispatch(sendHelp(location)),
+  helpSent: () => dispatch(helpSent()),
+  postUserDetailsStartAsync: (lat, lng, phoneNo, userId) => dispatch(postUserDetailsStartAsync(lat, lng, phoneNo, userId))
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
