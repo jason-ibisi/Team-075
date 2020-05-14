@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import ReportHistory from "./ReportHistory";
-import UpdateProfileButton from "../layouts/UpdateProfileButton";
+// import UpdateProfileButton from "../layouts/UpdateProfileButton";
 
 function UserViewProfile() {
   return (
@@ -15,7 +15,7 @@ function UserViewProfile() {
       <h4 className="profile-name">Johnson Pearson</h4>
       <p className="phone-number">+234 803 1234 5678</p>
       <p className="mail">johnson@mail.com</p>
-      <UpdateProfileButton />
+      {/* <UpdateProfileButton /> */}
       <h5 className="report-heading">Report History</h5>
       <ReportHistory />
     </Fragment>

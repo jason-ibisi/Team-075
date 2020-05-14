@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import './ReportAccident.css';
-import CustomButton from '../custom-button/custom-button.component';
+import CustomButton from '../../components/custom-button/custom-button.component';
+import './reportAccident.styles.css';
 
 class ReportAccident extends Component {
     constructor(props){
@@ -17,16 +17,20 @@ class ReportAccident extends Component {
     handleSubmit = event => {
         event.preventDefault();
 
-        fetch('http://localhost:3001/', {
-            method: 'post',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                location:{
-                lat: this.state.lat,
-                lng: this.state.lng
+        const { lat, lng, phoneNo, userId } = this.state;
+        fetch('http://localhost:3001/api/report', {
+        method: 'post',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            location:{
+            latitude: lat.toString(),
+            longitude: lng.toString()
             },
-            phoneNo: '',
-            userId: ''})
+            reporter:{
+            phoneNo,
+            userId
+            }
+            })
         })
         .then((data) => console.log)
         .catch((error) => console.log);
@@ -92,7 +96,8 @@ class ReportAccident extends Component {
                                     rows="5" 
                                     placeholder="Description"
                                     className="form-control"
-                                    onChange={ this.handleChange }></textarea>
+                                    onChange={ this.handleChange }>
+                                </textarea>
                             </div>
 
                             <div className="form-group">

@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import HomePage from '../src/components/homePage/homePage.component';
-import Navbar from "./components/layouts/Navbar.js";
-import UserViewProfile from "./components/userViewProfile/UserViewProfile.js";
-import ReportAccident from './components/ReportAccident/ReportAccident.js'
+import HomePage from '../src/pages/homepage/homePage.component';
+import UserProfile from './pages/userProfile/userProfile.component.jsx';
+import ReportAccident from './pages/reportAccidentPage/reportAccident.component';
+import Navbar from './components/nav-bar/navbar.component';
 
-import "./App.css";
+import './App.css';
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         <div className="container">
           <Switch>
             <Route exact path="/" component={HomePage} />
-            <Route exact path="/profile" component={UserViewProfile} />
+            <Route exact path="/profile" component={UserProfile} />
             <Route exact path="/report-accident" component={ReportAccident} />
           </Switch>
         </div>
