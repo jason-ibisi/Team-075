@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './Feedback.css';
+import './feedback.styles.css';
 
 class Feedback extends Component{
   render(){
