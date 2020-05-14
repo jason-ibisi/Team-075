@@ -7,6 +7,8 @@ import UserProfile from './pages/userProfile/userProfile.component';
 import ReportAccident from './pages/reportAccidentPage/reportAccident.component';
 import Navbar from './components/nav-bar/navbar.component';
 
+
+
 import './App.css';
 
 class App extends React.Component {
@@ -23,6 +25,8 @@ class App extends React.Component {
               <Route exact path="/report-accident" component={ReportAccident} />
             </Switch>
           </div>
+
+
         </div>
       </Router>
     );
@@ -35,3 +39,4 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps)(App);
+
